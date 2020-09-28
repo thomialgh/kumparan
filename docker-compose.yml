@@ -21,8 +21,7 @@ services:
             # KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://127.0.0.1:9092"
         ports: 
             - "9093:9092"
-        # onrun: 
-        #     - bash -c "kafka-topics.sh --create --topic kumparan --bootstrap-server kafka:9092"
+        # command: bash -c "sleep 10 && kafka-topics.sh --create --topic kumparan --bootstrap-server kafka:9092" &
         depends_on: 
             - zookeeper
     es:
