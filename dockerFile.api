@@ -1,0 +1,12 @@
+FROM golang:1.14-alpine as build-env
+ENV GO111MODULE=on
+
+WORKDIR /go/src/kumparan 
+COPY . .
+RUN cd api && go build main.go
+
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /go/src/kumparan/api/main /app
+EXPOSE 12130
+ENTRYPOINT [ "./main" ]
